@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,4 +45,12 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomer(Customer customer) {
         repository.save(mapper.map(customer,CustomerEntity.class));
     }
+
+    @Override
+    public Customer searchById(Integer id) {
+        repository.findById(id);
+        return mapper.map(repository.findById(id), Customer.class);
+    }
+
+
 }
