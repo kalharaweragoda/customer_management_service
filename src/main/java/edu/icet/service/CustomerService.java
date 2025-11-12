@@ -15,4 +15,8 @@ public interface CustomerService {
     void updateCustomer(Customer customer);
 
     Customer searchById(Integer id);
+
+    List<Customer> searchByName(String name);
+
+    List<Customer> searchByAddress(String address);
 }

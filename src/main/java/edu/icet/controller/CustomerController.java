@@ -40,4 +40,14 @@ public class CustomerController {
     public Customer searchById(@PathVariable Integer id){
         return service.searchById(id);
     }
+
+    @GetMapping("/search-by-name/{name}")
+    public List<Customer> searchByName(@PathVariable String name){
+        return service.searchByName(name);
+    }
+
+    @GetMapping("/search-by-address/{address}")
+    public List<Customer> searchByAddress(@PathVariable String address){
+        return service.searchByName(address);
+    }
 }
