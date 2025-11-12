@@ -27,8 +27,8 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteCustomer(){
-
+    public void deleteCustomer(@PathVariable Integer id){
+        service.deleteCustomer(id);
     }
 
 }
