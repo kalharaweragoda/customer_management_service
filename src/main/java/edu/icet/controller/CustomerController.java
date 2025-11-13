@@ -3,6 +3,7 @@ package edu.icet.controller;
 import edu.icet.dto.Customer;
 import edu.icet.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class CustomerController {
 
     //http://localhost:8080/customer/add
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addCustomer(@RequestBody Customer customer){
         service.addCustomer(customer);
         //System.out.println(customer);
@@ -27,6 +29,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteCustomer(@PathVariable Integer id){
         service.deleteCustomer(id);
     }
@@ -48,6 +51,6 @@ public class CustomerController {
 
     @GetMapping("/search-by-address/{address}")
     public List<Customer> searchByAddress(@PathVariable String address){
-        return service.searchByName(address);
+        return service.searchByAddress(address);
     }
 }

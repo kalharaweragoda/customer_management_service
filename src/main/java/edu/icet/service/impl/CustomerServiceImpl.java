@@ -7,7 +7,6 @@ import edu.icet.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,19 +57,17 @@ public class CustomerServiceImpl implements CustomerService {
         byName.forEach(customerEntity ->  {
             customerList.add(mapper.map(customerEntity, Customer.class));
         });
-
         return customerList;
     }
 
     @Override
     public List<Customer> searchByAddress(String address) {
-        List<CustomerEntity> byAddress = repository.findByName(address);
+        List<CustomerEntity> byAddress = repository.findByAddress(address);
         List<Customer> customerList = new ArrayList<>();
 
         byAddress.forEach(customerEntity ->  {
             customerList.add(mapper.map(customerEntity, Customer.class));
         });
-
         return customerList;
     }
 
